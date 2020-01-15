@@ -1,5 +1,6 @@
 {
   "name": "merchant-dashboard",
+  "homepage": "https://arvenaguinaldo.github.io/dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
