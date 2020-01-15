@@ -28,7 +28,7 @@ const initialState = {
         }
     },
     {
-      id: 1,
+      id: 2,
       name:'Merchant Two',
       shipping_fee:
         {

@@ -224,7 +224,7 @@ export class EditMerchant extends Component {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    icon="upload"
+                    icon="edit"
                     style={{marginRight: 16}}
                     disabled={isSubmitting}
                   >

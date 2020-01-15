@@ -32,7 +32,7 @@ export class DashboardLayout extends Component {
     const {collapsed} = this.state;
 
     const rightContent = [
-        <React.Fragment>
+        <React.Fragment key="1">
           <span style={{ color: '#999', marginRight: 4 }}>
             Hi,
           </span>
