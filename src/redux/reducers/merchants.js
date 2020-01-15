@@ -74,6 +74,7 @@ export default function merchantsReducer(state = initialState, action) {
     case MERCHANTS.FETCH_MERCHANT:
       return {
         ...state,
+        // eslint-disable-next-line eqeqeq
         merchant: state.merchants.find(x => x.id == action.params),
         isLoading: false
       };
