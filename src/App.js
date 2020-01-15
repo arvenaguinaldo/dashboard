@@ -33,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="dashboard">
       <Switch>
         <Route path="/login" exact component={Login} />
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
