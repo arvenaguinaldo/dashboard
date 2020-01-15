@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { Typography, Button, Form, Collapse, Row, Col, Popconfirm } from 'antd'
 import { Formik, Field } from 'formik';
+import * as Yup from 'yup';
 import DashboardLayout from '../../layouts/DashboardLayout'
 import { AntInput } from "../../components/FormikField/FormikField";
 import { formItemLayout, tailFormItemLayout } from '../../utils/constant'
@@ -11,6 +12,30 @@ import './Dashboard.less'
 
 const { Title } = Typography;
 const { Panel } = Collapse;
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().max(80, 'Must be shorter than 35').required('This field is Required'),
+  shipping_fee: Yup.object().shape({
+    metro_manila: Yup.object().shape({
+        box: Yup.number(null,"Must be a number").required('This field is Required'),
+        oversized: Yup.number("Must be a number").required('This field is Required'),
+        big_pouch: Yup.number("Must be a number").required('This field is Required'),
+        small_pouch: Yup.number("Must be a number").required('This field is Required'),
+    }),
+    provincial: Yup.object().shape({
+        box: Yup.number("Must be a number").required('This field is Required'),
+        oversized: Yup.number("Must be a number").required('This field is Required'),
+        big_pouch: Yup.number("Must be a number").required('This field is Required'),
+        small_pouch: Yup.number("Must be a number").required('This field is Required'),
+    }),
+    intra_provincial: Yup.object().shape({
+        box: Yup.number("Must be a number").required('This field is Required'),
+        oversized: Yup.number("Must be a number").required('This field is Required'),
+        big_pouch: Yup.number("Must be a number").required('This field is Required'),
+        small_pouch: Yup.number("Must be a number").required('This field is Required'),
+    })
+  }),
+})
 
 export class AddMerchant extends Component {
 
@@ -25,6 +50,7 @@ export class AddMerchant extends Component {
 
         <div className="page-form">
           <Formik
+            validationSchema={validationSchema}
             initialValues={item}
             enableReinitialize
             onSubmit={(values, {setSubmitting, resetForm}) => {
@@ -63,7 +89,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Box"
                           name="shipping_fee.metro_manila.box"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -75,7 +101,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Oversized"
                           name="shipping_fee.metro_manila.oversized"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -88,7 +114,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Big Pouch"
                           name="shipping_fee.metro_manila.big_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -100,7 +126,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Small Pouch"
                           name="shipping_fee.metro_manila.small_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -115,7 +141,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Box"
                           name="shipping_fee.provincial.box"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -127,7 +153,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Oversized"
                           name="shipping_fee.provincial.oversized"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -140,7 +166,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Big Pouch"
                           name="shipping_fee.provincial.big_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -152,7 +178,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Small Pouch"
                           name="shipping_fee.provincial.small_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -167,7 +193,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Box"
                           name="shipping_fee.intra_provincial.box"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -179,7 +205,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Oversized"
                           name="shipping_fee.intra_provincial.oversized"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -192,7 +218,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Big Pouch"
                           name="shipping_fee.intra_provincial.big_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback
@@ -204,7 +230,7 @@ export class AddMerchant extends Component {
                           component={AntInput}
                           label="Small Pouch"
                           name="shipping_fee.intra_provincial.small_pouch"
-                          type="text"
+                          type="number"
                           required
                           submitCount={submitCount}
                           hasFeedback

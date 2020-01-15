@@ -74,7 +74,7 @@ export default function merchantsReducer(state = initialState, action) {
     case MERCHANTS.FETCH_MERCHANT:
       return {
         ...state,
-        merchant: state.merchants.find(x => x.id === Number(action.params)),
+        merchant: state.merchants.find(x => x.id == action.params),
         isLoading: false
       };
     case MERCHANTS.UPDATE_MERCHANT:

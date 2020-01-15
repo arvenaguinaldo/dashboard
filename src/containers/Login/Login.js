@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { Form, Button, message } from 'antd'
 import { Formik, Field} from 'formik';
+import * as Yup from 'yup';
 import { AntInput, AntInputPassword } from "../../components/FormikField/FormikField";
 
 import './Login.less'
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email('Enter a valid email').required('This field is Required'),
+  password: Yup.string().required('This field is Required'),
+})
 
 export class Login extends Component {
 
@@ -28,6 +34,7 @@ export class Login extends Component {
           </div>
 
             <Formik
+              validationSchema={validationSchema}
               initialValues={item}
               enableReinitialize
               onSubmit={(values, {setSubmitting, resetForm}) => {
